@@ -14,7 +14,7 @@ public class Hotel
     public bool Spa { get; set; }
     public bool Restaurant { get; set; }
 
-    public static readonly List<Hotel> Hotels = new List<Hotel>
+    public static readonly List<Hotel> Data = new List<Hotel>
     {
         new Hotel
         {

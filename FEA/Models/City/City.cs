@@ -6,7 +6,7 @@ public class City
     public string Name { get; set; }
     public int CountryId { get; set; }
 
-    public static readonly List<City> Cities = new List<City>
+    public static readonly List<City> Data = new List<City>
     {
         new City { Id = 1, Name = "Vancouver", CountryId = 1 },
         new City { Id = 2, Name = "Ottawa", CountryId = 1 },
