@@ -4,7 +4,6 @@ namespace FEA.Controllers;
 
 [ApiController]
 [Route("/api/contact-us")]
-
 public class ContactUs : ControllerBase
 {
     [HttpGet]

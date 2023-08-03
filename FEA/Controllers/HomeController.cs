@@ -4,7 +4,6 @@ namespace FEA.Controllers;
 
 [ApiController]
 [Route("/api/home")]
-
 public class HomeController : ControllerBase
 {
     [HttpGet]
