@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 namespace FEA.Controllers
 {
@@ -27,6 +26,7 @@ namespace FEA.Controllers
         {
             var user = new IdentityUser { UserName = email, Email = email };
             var result = await _userManager.CreateAsync(user, password);
+            Console.WriteLine(result);
             if (result.Succeeded)
             {
                 await _signInManager.SignInAsync(user, isPersistent: false);
@@ -53,7 +53,7 @@ namespace FEA.Controllers
             return Ok();
         }
 
-        [HttpPost("roles/admin")]
+        /*[HttpPost("roles/admin")]
         public async Task<IActionResult> CreateAdminRole()
         {
             var result = await _roleManager.CreateAsync(new IdentityRole("Admin"));
@@ -78,6 +78,6 @@ namespace FEA.Controllers
                 return Ok();
             }
             return BadRequest(result.Errors);
-        }
+        }*/
     }
 }

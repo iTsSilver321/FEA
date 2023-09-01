@@ -4,9 +4,9 @@ public class Country
 {
     public static readonly List<Country> Data = new()
     {
-        new() { Id = 1, Name = "Canada" },
-        new() { Id = 2, Name = "Albania" },
-        new() { Id = 3, Name = "Cuba" }
+        new() { Name = "Canada" },
+        new() { Name = "Albania" },
+        new() { Name = "Cuba" }
     };
 
     public int Id { get; set; }

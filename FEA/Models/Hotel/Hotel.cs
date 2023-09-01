@@ -1,4 +1,7 @@
-﻿namespace FEA.Models.Hotel;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
+
+namespace FEA.Models.Hotel;
 
 public class Hotel
 {
@@ -18,7 +21,6 @@ public class Hotel
     {
         new()
         {
-            Id = 1,
             CityId = 1,
             Name = "Mirage Hotel",
             Price = 199.99,
@@ -40,7 +42,6 @@ public class Hotel
         
         new()
         {
-            Id = 2,
             CityId = 2,
             Name = "The Grand Hotel",
             Price = 299.99,
@@ -61,7 +62,6 @@ public class Hotel
         
         new() 
         {
-            Id = 3,
             CityId = 3,
             Name = "Tirana Palace",
             Price = 149.99,
@@ -82,7 +82,6 @@ public class Hotel
         
         new() 
         {
-            Id = 4,
             CityId = 4,
             Name = "Havana Resort",
             Price = 249.99,

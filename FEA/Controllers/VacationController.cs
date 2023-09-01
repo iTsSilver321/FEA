@@ -1,4 +1,5 @@
-﻿using FEA.Models.City;
+﻿using FEA.Data;
+using FEA.Models.City;
 using FEA.Models.Country;
 using FEA.Models.Hotel;
 using Microsoft.AspNetCore.Authorization;
@@ -11,17 +12,18 @@ namespace FEA.Controllers;
 public class VacationController : ControllerBase
 {
     [HttpGet("countries")]
-    public IActionResult GetCountries()
+    public IActionResult GetCountries([FromServices] ApplicationDbContext context)
     {
-        return Ok(Country.Data);
+        var countries = context.Countries.ToList();
+        return Ok(countries);
     }
 
     [HttpPost("countries")]
-    public IActionResult CreateCountry(Country country)
+    public IActionResult CreateCountry(Country country, [FromServices] ApplicationDbContext context)
     {
-        country.Id = Country.Data.Count + 1;
-        Country.Data.Add(country);
-        return CreatedAtAction(nameof(GetCountries), new { id = country.Id }, country);
+        context.Countries.Add(country);
+        context.SaveChanges();
+        return CreatedAtAction(nameof(GetCountries), new { Country = country.Name }, country);
     }
 
     [HttpGet("countries/{countryId}/cities")]
@@ -32,10 +34,10 @@ public class VacationController : ControllerBase
     }
 
     [HttpPost("cities")]
-    public IActionResult CreateCity(City city)
+    public IActionResult CreateCity([FromServices] ApplicationDbContext context, City city)
     {
-        city.Id = City.Data.Count + 1;
-        City.Data.Add(city);
+        context.Cities.Add(city);
+        context.SaveChanges();
         return CreatedAtAction(nameof(GetCities), new { countryId = city.CountryId }, city);
     }
 
@@ -47,10 +49,10 @@ public class VacationController : ControllerBase
     }
 
     [HttpPost("hotels")]
-    public IActionResult CreateHotel(Hotel hotel)
+    public IActionResult CreateHotel([FromServices] ApplicationDbContext context, Hotel hotel)
     {
-        hotel.Id = Hotel.Data.Count + 1;
-        Hotel.Data.Add(hotel);
+        context.Hotels.Add(hotel);
+        context.SaveChanges();
         return CreatedAtAction(nameof(GetHotels), new { cityId = hotel.CityId }, hotel);
     }
     
